@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Parfum } from '../model/parfum.model';
-import { Categorie } from '../model/cathegorie.model';
+import { Categorie } from '../model/categorie.model';
 
 @Injectable({ providedIn: 'root' })
 export class ParfumService {
@@ -29,12 +29,13 @@ export class ParfumService {
   }
 
   ajouterParfum(p: Parfum) {
-  const maxId = this.parfums.length > 0
-    ? Math.max(...this.parfums.map(x => x.idParfum))
-    : 0;
+    const maxId = this.parfums.length > 0
+      ? Math.max(...this.parfums.map(x => x.idParfum))
+      : 0;
     p.idParfum = maxId + 1;
     this.parfums.push(p);
-}
+  }
+
   supprimerParfum(p: Parfum) {
     const index = this.parfums.indexOf(p, 0);
     if (index > -1) {
@@ -61,5 +62,15 @@ export class ParfumService {
 
   consulterCategorie(id: number): Categorie {
     return this.categories.find(cat => cat.idCat == id)!;
+  }
+
+  rechercherParCategorie(idCat: number): Parfum[] {
+    return this.parfums.filter(p => p.categorie && p.categorie.idCat == idCat);
+  }
+
+  rechercherParNom(nom: string): Parfum[] {
+    return this.parfums.filter(p =>
+      p.nomParfum.toLowerCase().includes(nom.toLowerCase())
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Categorie } from './cathegorie.model';
+import { Categorie } from './categorie.model';
 
 export class Parfum {
   idParfum!: number;

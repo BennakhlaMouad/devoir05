@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Parfum } from '../model/parfum.model';
-import { Categorie } from '../model/cathegorie.model';
+import { Categorie } from '../model/categorie.model';
 import { ParfumService } from '../services/parfum.service';
 
 @Component({
